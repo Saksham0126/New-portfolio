@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Portfolio — [Your Name]</title>
+<title>Portfolio — Saksham Kumar Chandel</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 /* ── RESET ── */
@@ -87,7 +87,7 @@ nav.scrolled {
 
 /* ── HERO ── */
 #hero {
-  min-height: 100vh; display: flex; align-items: center;
+  min-height: 100vh; display: flex; align-items: center; justify-content: space-between;
   padding: 10rem 4rem 6rem;
   position: relative; overflow: hidden;
 }
@@ -97,7 +97,7 @@ nav.scrolled {
   clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
   z-index: 0;
 }
-.hero-content { position: relative; z-index: 1; max-width: 620px; }
+.hero-content { position: relative; z-index: 1; max-width: 580px; }
 .hero-eyebrow {
   font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
   color: var(--maroon-soft); font-weight: 400; margin-bottom: 1.5rem;
@@ -143,8 +143,39 @@ nav.scrolled {
   padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
 }
 .btn-ghost:hover { color: var(--maroon-deep); border-color: var(--maroon-deep); }
+
+/* Added Hero Image Styles */
+.hero-image-wrapper {
+  position: relative; z-index: 1;
+  width: 40%; max-width: 500px;
+  opacity: 0; transform: translateX(30px);
+  animation: fadeLeft 1s ease 0.6s forwards;
+}
+/* Added Hero Image Styles */
+.hero-image-wrapper {
+  position: relative; z-index: 1;
+  width: 35%; /* Scaled down slightly to clear the text below */
+  max-width: 420px;
+  opacity: 0; transform: translateX(30px);
+  animation: fadeLeft 1s ease 0.6s forwards;
+}
+.hero-image {
+  width: 100%; 
+  aspect-ratio: 1 / 1; /* Forces a perfect square */
+  object-fit: cover; /* Prevents the image from stretching */
+  border-radius: 50%; /* Makes it perfectly circular */
+  box-shadow: 0 20px 40px rgba(28, 16, 8, 0.08);
+  filter: grayscale(15%) contrast(105%);
+  transition: filter 0.4s ease, transform 0.4s ease;
+  display: block;
+}
+.hero-image-wrapper:hover .hero-image {
+  filter: grayscale(0%) contrast(100%);
+  transform: translateY(-5px);
+}
+
 .hero-stats {
-  position: absolute; right: 4rem; bottom: 5rem; z-index: 1;
+  position: absolute; right: 4rem; bottom: 3rem; z-index: 1;
   display: flex; gap: 3rem;
   opacity: 0; animation: fadeUp 0.9s ease 1.2s forwards;
 }
@@ -413,6 +444,9 @@ footer {
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0) translateX(0); }
 }
+@keyframes fadeLeft {
+  to { opacity: 1; transform: translateX(0); }
+}
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.3; transform: scaleY(1); }
   50% { opacity: 1; transform: scaleY(1.15); }
@@ -423,8 +457,11 @@ footer {
   nav { padding: 1.25rem 2rem; }
   nav.scrolled { padding: 0.85rem 2rem; }
   .nav-links { display: none; }
-  #hero { padding: 8rem 2rem 5rem; }
-  .hero-stats { right: 2rem; }
+  #hero { flex-direction: column; justify-content: center; text-align: center; padding: 8rem 2rem 5rem; gap: 4rem; }
+  .hero-content { margin: 0 auto; }
+  .hero-ctas { justify-content: center; }
+  .hero-image-wrapper { width: 80%; margin: 0 auto; }
+  .hero-stats { position: static; justify-content: center; margin-top: 2rem; }
   section { padding: 5rem 2rem; }
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .skills-grid { grid-template-columns: 1fr 1fr; }
@@ -437,7 +474,7 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .reveal-left, .reveal-right { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .reveal, .reveal-left, .reveal-right, .hero-image-wrapper { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
   .hero-eyebrow, .hero-name, .hero-tagline, .hero-ctas, .hero-stats, .hero-scroll-hint { opacity: 1 !important; transform: none !important; animation: none !important; }
   .scroll-line { animation: none !important; }
 }
@@ -445,13 +482,11 @@ footer {
 </head>
 <body>
 
-<!-- Custom cursor -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav id="nav">
-  <a href="#hero" class="nav-logo">[Your Name]</a>
+  <a href="#hero" class="nav-logo">Saksham</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -462,39 +497,29 @@ footer {
   </ul>
 </nav>
 
-<!-- HERO -->
 <div id="hero">
   <div class="hero-bg-line"></div>
+  
   <div class="hero-content">
     <p class="hero-eyebrow">Electronics &amp; Computer Engineering</p>
-    <h1 class="hero-name">Hi, I'm<br><em>[Your Name]</em></h1>
-    <p class="hero-tagline">A second-year engineering student building things at the edge of hardware and software — from the MERN stack and DevOps to local AI integration.</p>
+    <h1 class="hero-name">Hi, I'm<br><em>Saksham</em></h1>
+    <p class="hero-tagline">A second-year engineering student building things at the edge of hardware and software — from complex circuit analysis and MERN stack deployments to local AI integration.</p>
     <div class="hero-ctas">
       <a href="#projects" class="btn-fill">View Work</a>
       <a href="#contact" class="btn-ghost">Get in touch</a>
     </div>
   </div>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-n">4th</div>
-      <div class="stat-l">Semester</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">MERN</div>
-      <div class="stat-l">Stack</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">AI</div>
-      <div class="stat-l">Integration</div>
-    </div>
+
+  <div class="hero-image-wrapper">
+    <img src="IMG_20251212_011040_605.jpg" alt="Saksham's Workspace" class="hero-image" />
   </div>
+
   <div class="hero-scroll-hint">
     <span class="scroll-text">Scroll</span>
     <div class="scroll-line"></div>
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
   <p class="section-eyebrow reveal">About</p>
   <h2 class="section-title reveal delay-1">The person<br><em>behind the work</em></h2>
@@ -504,7 +529,7 @@ footer {
       <div class="about-text">
         <p>I'm a second-year B.Tech student majoring in Electronics and Computer Engineering at JIIT Noida.</p>
         <blockquote>"If it can be built, it can be better understood by building it manually."</blockquote>
-        <p>My curiosity moves from fundamental Data Structures and Algorithms all the way up the stack to Linux environments, web development, and local AI modeling. I love projects that challenge me to build from scratch—whether it's writing an A* algorithm without external libraries or deploying a full-stack platform.</p>
+        <p>My curiosity moves from fundamental Data Structures to meticulous circuit analysis and complex graph diagrams, stretching all the way up the stack to Linux environments, web development, and evaluating high-performance hardware. I love projects that challenge me to build from scratch—whether it's writing an A* algorithm without external libraries, deploying a full-stack platform, or catching missing edges in intricate circuit designs.</p>
         <p>When I'm not in the lab or deep in code, I'm working on faceless short-form content creation, editing Reels, and documenting the grind.</p>
       </div>
     </div>
@@ -527,8 +552,8 @@ footer {
         <div class="about-card">
           <div class="about-card-num">III</div>
           <div class="about-card-body">
-            <h4>AI &amp; Electronics</h4>
-            <p>Integrating local LLMs (Ollama) for voice assistants, alongside circuit analysis and electronics engineering.</p>
+            <h4>Electronics &amp; Hardware</h4>
+            <p>In-depth circuit analysis, identifying missing logic in complex networks, hardware performance evaluation, and co-processor design.</p>
           </div>
         </div>
         <div class="about-card">
@@ -543,7 +568,6 @@ footer {
   </div>
 </section>
 
-<!-- SKILLS -->
 <div id="skills">
   <div class="skills-inner">
     <p class="section-eyebrow reveal">Skills</p>
@@ -578,19 +602,18 @@ footer {
         </ul>
       </div>
       <div class="skill-cat reveal delay-4">
-        <div class="skill-cat-title">Tools &amp; Tech</div>
+        <div class="skill-cat-title">Electronics &amp; Tools</div>
         <ul class="skill-list">
-          <li>Ollama (Local AI)</li>
           <li>Circuit Analysis</li>
-          <li>DaVinci Resolve</li>
-          <li>CapCut</li>
+          <li>Hardware Evaluation</li>
+          <li>Co-Processor Design</li>
+          <li>Ollama (Local AI)</li>
         </ul>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PROJECTS -->
 <section id="projects">
   <p class="section-eyebrow reveal">Projects</p>
   <h2 class="section-title reveal delay-1">Things I've <em>built</em></h2>
@@ -653,12 +676,20 @@ footer {
   </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience" style="border-top: 1px solid var(--cream-border);">
   <p class="section-eyebrow reveal">Experience</p>
   <h2 class="section-title reveal delay-1">Where I've <em>been</em></h2>
   <div class="rule reveal delay-2"></div>
   <div class="exp-list">
+
+    <div class="exp-row reveal delay-1">
+      <div class="exp-period">Jun 2026 — Jul 2026</div>
+      <div class="exp-content">
+        <div class="exp-role">Research Intern — NINE Labs</div>
+        <div class="exp-org">IIT Guwahati</div>
+        <p class="exp-desc">Working on the design and development of AI/ML and Post Quantum Cryptography Co-Processors under the MeitY initiative for Electronics System Design and Manufacturing.</p>
+      </div>
+    </div>
 
     <div class="exp-row reveal delay-2">
       <div class="exp-period">2024 — Present</div>
@@ -672,7 +703,6 @@ footer {
   </div>
 </section>
 
-<!-- BLOG -->
 <div id="blog">
   <div class="blog-inner">
     <p class="section-eyebrow reveal">Writing &amp; Content</p>
@@ -705,7 +735,6 @@ footer {
   </div>
 </div>
 
-<!-- CONTACT -->
 <section id="contact">
   <p class="section-eyebrow reveal">Contact</p>
   <h2 class="section-title reveal delay-1">Let's make <em>something</em></h2>
@@ -714,21 +743,21 @@ footer {
     <div class="reveal-left delay-1">
       <p class="contact-lead">"Whether it's discussing the optimal way to write an AVL tree, collaborating on an AI project, or talking short-form content strategy — I'm always open."</p>
       <div class="contact-social">
-        <a href="mailto:you@email.com" class="social-item">
+        <a href="mailto:saksham0126@gmail.com" class="social-item">
           <span class="social-name">Email</span>
-          <span class="social-handle">you@email.com ↗</span>
+          <span class="social-handle">saksham0126@gmail.com ↗</span>
         </a>
-        <a href="https://github.com/yourhandle" class="social-item">
+        <a href="https://github.com/Saksham0126" class="social-item">
           <span class="social-name">GitHub</span>
-          <span class="social-handle">github.com/yourhandle ↗</span>
+          <span class="social-handle">github.com/Saksham0126 ↗</span>
         </a>
-        <a href="https://instagram.com/yourhandle" class="social-item">
+        <a href="https://www.instagram.com/me_sakshu.k/?__pwa=1" class="social-item">
           <span class="social-name">Instagram</span>
-          <span class="social-handle">@yourhandle ↗</span>
+          <span class="social-handle">@me_sakshu.k ↗</span>
         </a>
-        <a href="https://linkedin.com/in/yourname" class="social-item">
+        <a href="https://www.linkedin.com/in/saksham-kumar-chandel-5407991b5/" class="social-item">
           <span class="social-name">LinkedIn</span>
-          <span class="social-handle">linkedin.com/in/yourname ↗</span>
+          <span class="social-handle">linkedin  ↗</span>
         </a>
       </div>
     </div>
@@ -750,9 +779,8 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-name">[Your Name]</div>
+  <div class="footer-name">Saksham Kumar Chandel</div>
   <div class="footer-copy">© 2026 — Built with care</div>
 </footer>
 
@@ -790,7 +818,7 @@ window.addEventListener('scroll', () => {
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .hero-image-wrapper').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
